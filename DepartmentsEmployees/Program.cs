@@ -11,8 +11,6 @@ namespace DepartmentsEmployees
         {
             var departmentRepo = new DepartmentRepository();
 
-            
-
             Console.WriteLine("Getting All Departments:");
             Console.WriteLine();
 
@@ -46,14 +44,34 @@ namespace DepartmentsEmployees
             Console.WriteLine();
             Console.WriteLine();
 
-            var newDept = new Department();
+            //ADDING UPDATING DEPTS
 
-            Console.WriteLine("What dept would you like to add?");
+            //var newDept = new Department();
 
-            newDept.DepartmentName = Console.ReadLine();
+            //Console.WriteLine("What dept would you like to add?");
+
+            //newDept.DepartmentName = Console.ReadLine();
 
           
-            departmentRepo.AddDepartment(newDept);
+            //departmentRepo.AddDepartment(newDept);
+
+            //Console.WriteLine("what Dept Id to change?");
+            //var deptToUpdate = Int32.Parse(Console.ReadLine());
+
+            //Console.WriteLine("what to call it?");
+            //var newDeptName = Console.ReadLine();
+
+            
+
+            //departmentRepo.UpdateDepartment(deptToUpdate, new Department { DepartmentName = newDeptName });
+
+            //delete department
+
+            //departmentRepo.DeleteDepartment(1);
+
+            //ADDING NEW EMPLOYEE
+
+            employeeRepo.AddEmployee(new Employee { FirstName = "jojo", LastName = "bob", DepartmentId = 1 });
         }
     }
 }

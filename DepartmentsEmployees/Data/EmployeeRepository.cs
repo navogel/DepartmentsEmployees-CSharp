@@ -58,8 +58,8 @@ namespace DepartmentsEmployees.Data
                         // We user the reader's GetXXX methods to get the value for a particular ordinal.
                         int idValue = reader.GetInt32(idColumnPosition);
 
-                        
-                        
+
+
 
                         int firstNameColumnPosition = reader.GetOrdinal("FirstName");
                         string firstNameValue = reader.GetString(firstNameColumnPosition);
@@ -122,6 +122,27 @@ namespace DepartmentsEmployees.Data
                     reader.Close();
 
                     return employee;
+                }
+            }
+        }
+
+        public void AddEmployee(Employee employee)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+
+                    cmd.CommandText = "INSERT INTO Employee (FirstName, LastName, DepartmentId) OUTPUT INSERTED.Id Values (@FirstName, @LastName, @DepartmentId)";
+                    cmd.Parameters.Add(new SqlParameter("@FirstName", employee.FirstName));
+                    cmd.Parameters.Add(new SqlParameter("@LastName", employee.LastName));
+                    cmd.Parameters.Add(new SqlParameter("@DepartmentID", employee.DepartmentId));
+                    int id = (int)cmd.ExecuteScalar();
+
+                    employee.Id = id;
+
+
                 }
             }
         }

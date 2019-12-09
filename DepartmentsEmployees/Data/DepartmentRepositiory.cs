@@ -123,7 +123,7 @@ namespace DepartmentsEmployees.Data
         ///   NOTE: This method sends data to the database,
         ///   it does not get anything from the database, so there is nothing to return.
         /// </summary>
-        public Department AddDepartment(Department department)
+        public void AddDepartment(Department department)
         {
             using (SqlConnection conn = Connection)
             {
@@ -138,7 +138,7 @@ namespace DepartmentsEmployees.Data
 
                     department.Id = id;
 
-                    return department;
+                   
                 }
             }
 
