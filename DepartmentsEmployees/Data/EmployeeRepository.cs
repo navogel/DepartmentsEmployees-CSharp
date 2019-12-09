@@ -146,5 +146,25 @@ namespace DepartmentsEmployees.Data
                 }
             }
         }
+
+        public void UpdateEmployee(int id, Employee employee)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"UPDATE Employee
+                                     SET FirstName = @FirstName, LastName = @LastName, DepartmentId = @DepartmentId 
+                                     WHERE Id = @id";
+                    cmd.Parameters.Add(new SqlParameter("@FirstName", employee.FirstName));
+                    cmd.Parameters.Add(new SqlParameter("@LastName", employee.LastName));
+                    cmd.Parameters.Add(new SqlParameter("@DepartmentID", employee.DepartmentId));
+                    cmd.Parameters.Add(new SqlParameter("@id", id));
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

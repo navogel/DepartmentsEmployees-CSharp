@@ -52,7 +52,7 @@ namespace DepartmentsEmployees
 
             //newDept.DepartmentName = Console.ReadLine();
 
-          
+
             //departmentRepo.AddDepartment(newDept);
 
             //Console.WriteLine("what Dept Id to change?");
@@ -61,7 +61,7 @@ namespace DepartmentsEmployees
             //Console.WriteLine("what to call it?");
             //var newDeptName = Console.ReadLine();
 
-            
+
 
             //departmentRepo.UpdateDepartment(deptToUpdate, new Department { DepartmentName = newDeptName });
 
@@ -71,7 +71,11 @@ namespace DepartmentsEmployees
 
             //ADDING NEW EMPLOYEE
 
-            employeeRepo.AddEmployee(new Employee { FirstName = "jojo", LastName = "bob", DepartmentId = 1 });
+            //employeeRepo.AddEmployee(new Employee { FirstName = "jojo", LastName = "bob", DepartmentId = 1 });
+
+            //UPDATING EMPLOYEE
+
+            employeeRepo.UpdateEmployee(4, new Employee { FirstName = "hoho", LastName = "bob", DepartmentId = 1 });
         }
     }
 }
