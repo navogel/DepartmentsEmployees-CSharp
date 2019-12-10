@@ -23,6 +23,10 @@ namespace DepartmentsEmployees.Data
                 return new SqlConnection(_connectionString);
             }
         }
+
+        /// <summary>
+        ///  Get AllEmployees
+        /// </summary>
         public List<Employee> GetAllemployees()
         {
             //  We must "use" the database connection.
@@ -92,6 +96,11 @@ namespace DepartmentsEmployees.Data
             }
         }
 
+
+        /// <summary>
+        ///  Get Employee by Id
+        /// </summary>
+
         public Employee GetEmployeeById(int id)
         {
             using (SqlConnection conn = Connection)
@@ -126,6 +135,10 @@ namespace DepartmentsEmployees.Data
             }
         }
 
+        /// <summary>
+        ///  Add new Employee 
+        /// </summary>
+
         public void AddEmployee(Employee employee)
         {
             using (SqlConnection conn = Connection)
@@ -147,6 +160,10 @@ namespace DepartmentsEmployees.Data
             }
         }
 
+        /// <summary>
+        ///  Update Employee with the given id, and employee object
+        /// </summary>
+
         public void UpdateEmployee(int id, Employee employee)
         {
             using (SqlConnection conn = Connection)
@@ -162,6 +179,23 @@ namespace DepartmentsEmployees.Data
                     cmd.Parameters.Add(new SqlParameter("@DepartmentID", employee.DepartmentId));
                     cmd.Parameters.Add(new SqlParameter("@id", id));
 
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+        /// <summary>
+        ///  Delete the employee with the given id
+        /// </summary>
+        public void DeleteEmployee(int id)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Employee WHERE Id = @id";
+                    cmd.Parameters.Add(new SqlParameter("@id", id));
                     cmd.ExecuteNonQuery();
                 }
             }

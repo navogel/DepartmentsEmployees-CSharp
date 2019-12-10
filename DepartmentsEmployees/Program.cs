@@ -75,7 +75,12 @@ namespace DepartmentsEmployees
 
             //UPDATING EMPLOYEE
 
-            employeeRepo.UpdateEmployee(4, new Employee { FirstName = "hoho", LastName = "bob", DepartmentId = 1 });
+            // employeeRepo.UpdateEmployee(4, new Employee { FirstName = "hoho", LastName = "bob", DepartmentId = 1 });
+
+            //DELETE EMPLOYEE
+
+            employeeRepo.DeleteEmployee(4);
         }
+
     }
 }
